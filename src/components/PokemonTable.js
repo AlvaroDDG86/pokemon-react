@@ -1,9 +1,12 @@
-import { PokemonInfoTable } from '../pokemonTypes';
+// import { PokemonInfoTable } from '../pokemonTypes';
+import { useContext } from "react";
 import PokemonRow from "./PokemonRow";
 
 import { TableHead } from '../layouts/index'
+import PokemonContext from '../PokemonContext';
 
-const PokemonTable = ({ pokemon, filter, setSelectedItem }) => {
+const PokemonTable = () => {
+  const { pokemon, filter, setSelectedItem } = useContext(PokemonContext)
 
   return (
     <table width="100%">
@@ -32,6 +35,6 @@ const PokemonTable = ({ pokemon, filter, setSelectedItem }) => {
   );
 };
 
-PokemonTable.propTypes = PokemonInfoTable
+// PokemonTable.propTypes = PokemonInfoTable
 
 export default PokemonTable

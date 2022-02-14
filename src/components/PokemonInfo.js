@@ -1,7 +1,10 @@
-import { PokemonTypeInfo } from "../pokemonTypes";
+import { useContext } from "react";
+import PokemonContext from "../PokemonContext";
+// import { PokemonTypeInfo } from "../pokemonTypes";
 
-const PokemonInfo = ({ name, base }) => {
-  if (!name) return <div>No Pokemon selected</div>;
+const PokemonInfo = () => {
+  const { selectedItem } = useContext(PokemonContext)
+  if (!selectedItem) return <div>No Pokemon selected</div>;
   return (
     <div
         style={{
@@ -12,14 +15,14 @@ const PokemonInfo = ({ name, base }) => {
             minWidth: '100%'
         }}
     >
-      <h2>{name.english}</h2>
+      <h2>{selectedItem.name.english}</h2>
       <table>
         <tbody>
-          {Object.keys(base).map((key) => {
+          {Object.keys(selectedItem.base).map((key) => {
             return (
               <tr key={key}>
                 <td style={{ textAlign: 'left' }}>{key}</td>
-                <td style={{ fontWeight: 'bold' }}>{base[key]}</td>
+                <td style={{ fontWeight: 'bold' }}>{selectedItem.base[key]}</td>
               </tr>
             );
           })}
@@ -29,6 +32,6 @@ const PokemonInfo = ({ name, base }) => {
   );
 };
 
-PokemonInfo.propTypes = PokemonTypeInfo;
+// PokemonInfo.propTypes = PokemonTypeInfo;
 
 export default PokemonInfo;

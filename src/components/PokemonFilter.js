@@ -1,5 +1,8 @@
+import { useContext } from 'react';
 import { Input } from '../layouts/index'
-const PokemonFilter = ({ filter, setFilter }) => {
+import PokemonContext from '../PokemonContext';
+const PokemonFilter = () => {
+  const { filter, setFilter } = useContext(PokemonContext)
   return (
     <Input
       value={filter}
