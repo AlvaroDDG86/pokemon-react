@@ -1,10 +1,10 @@
 import React from "react"
 
+import './App.css'
 import PokemonFilter from './components/PokemonFilter'
 import PokemonInfo from "./components/PokemonInfo";
 import PokemonTable from "./components/PokemonTable";
 
-import "./App.css";
 import { Container, Title, TwoColumnsLayout, Center } from './layouts/index'
 
 function App() {

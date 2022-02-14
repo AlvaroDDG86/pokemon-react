@@ -3,12 +3,12 @@ import styled from "@emotion/styled";
 // normal CSS
 export const Title = styled.h1`
   text-align: center;
-  color: blue;
+  color: #1976d2;
 `;
 export const TwoColumnsLayout = styled.div`
   display: grid;
   grid-template-columns: 70% 30%;
-  grid-column-gap: 1rem;
+  box-sizing: border-box;
 `;
 
 export const Container = styled.div`
@@ -36,5 +36,5 @@ export const Input = styled.input`
 export const TableHead = styled.th`
   text-align: center;
   font-size: x-large;
-  color: blue;
+  color: #1976d2;
 `;
