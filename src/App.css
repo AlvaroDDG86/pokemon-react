@@ -7,3 +7,9 @@ th {
   font-size: x-large;
   color: blue;
 }
+
+input[type="text"] {
+  width: 100%;
+  font-size: x-large;
+  padding: 0.2rem;
+}

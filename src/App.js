@@ -23,6 +23,7 @@ PokemonRow.propTypes = {
 }
 
 function App() {
+  const [filter, setFilter] = React.useState('')
   return (
     <div
       className="App"
@@ -33,25 +34,37 @@ function App() {
       }}
       >
       <h1 className="title">Pokemon</h1>
-      <table width="100%">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Type</th>
-          </tr>
-        </thead>
-        <tbody>
-          {
-            pokemon
-            .slice(0, 20)
-            .map(pkmn => {
-              return (
-                <PokemonRow key={pkmn.id} pokemon={pkmn} />
-              )
-            })
-          }
-        </tbody>
-      </table>
+      <input
+        value={filter}
+        onChange={event => setFilter(event.target.value)}
+        type="text"
+      />
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: '70% 30%',
+        gridColumnGap: '1rem'
+      }}>
+        <table width="100%">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              pokemon
+              .filter(pkmn => pkmn.name.english.toLowerCase().includes(filter.toLowerCase()))
+              .slice(0, 20)
+              .map(pkmn => {
+                return (
+                  <PokemonRow key={pkmn.id} pokemon={pkmn} />
+                )
+              })
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
