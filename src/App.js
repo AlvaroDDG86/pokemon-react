@@ -1,36 +1,34 @@
-import React from "react";
+import React, { useReducer } from "react";
 
 import PokemonContext from "./PokemonContext";
+import { Container, Title, TwoColumnsLayout, Center } from "./layouts/index";
 
 import "./App.css";
 import PokemonFilter from "./components/PokemonFilter";
 import PokemonInfo from "./components/PokemonInfo";
 import PokemonTable from "./components/PokemonTable";
 
-import { Container, Title, TwoColumnsLayout, Center } from "./layouts/index";
+import PokemonReducer, { initialState } from "./PokemonReducer";
 
 function App() {
-  const [filter, setFilter] = React.useState("");
-  const [selectedItem, setSelectedItem] = React.useState(null);
-  const [pokemon, setPokemon] = React.useState([]);
+  const [state, dispatch] = useReducer(PokemonReducer, { ...initialState })
 
   React.useEffect(() => {
     fetch("http://localhost:3000/pokemon.json")
       .then((response) => response.json())
       .then((data) => {
-        setPokemon(data);
+        dispatch({
+          type: 'SET_POKEMON',
+          payload: data
+        });
       });
   }, []);
 
-  if (pokemon.length === 0) return <div>No pokemons found</div>;
+  if (state.pokemon.length === 0) return <div>No pokemons found</div>;
   return (
     <PokemonContext.Provider value={{
-        filter,
-        setFilter,
-        selectedItem,
-        setSelectedItem,
-        pokemon,
-        setPokemon
+        state,
+        dispatch
       }}>
       <Container>
         <Title>Pokemon</Title>

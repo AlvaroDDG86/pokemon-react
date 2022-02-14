@@ -6,7 +6,7 @@ import { TableHead } from '../layouts/index'
 import PokemonContext from '../PokemonContext';
 
 const PokemonTable = () => {
-  const { pokemon, filter, setSelectedItem } = useContext(PokemonContext)
+  const { state, dispatch } = useContext(PokemonContext)
 
   return (
     <table width="100%">
@@ -18,16 +18,19 @@ const PokemonTable = () => {
         </tr>
       </thead>
       <tbody>
-        {pokemon
+        {state.pokemon
           .filter((pkmn) =>
-            pkmn.name.english.toLowerCase().includes(filter.toLowerCase())
+            pkmn.name.english.toLowerCase().includes(state.filter.toLowerCase())
           )
           .slice(0, 20)
           .map((pkmn) => (
               <PokemonRow
                 key={pkmn.id}
                 pokemon={pkmn}
-                onSelect={(pokemon) => setSelectedItem(pokemon)}
+                onSelect={(pokemon) => dispatch({
+                  type: 'SET_SELECTED',
+                  payload: pokemon
+                })}
               />
             ))}
       </tbody>

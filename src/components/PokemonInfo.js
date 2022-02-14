@@ -3,7 +3,7 @@ import PokemonContext from "../PokemonContext";
 // import { PokemonTypeInfo } from "../pokemonTypes";
 
 const PokemonInfo = () => {
-  const { selectedItem } = useContext(PokemonContext)
+  const { state: { selectedItem } } = useContext(PokemonContext)
   if (!selectedItem) return <div>No Pokemon selected</div>;
   return (
     <div
