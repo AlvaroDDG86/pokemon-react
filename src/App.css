@@ -1,5 +1,16 @@
+body {
+  background-color: black;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
+  background-color: white;
+  min-height: 100vh;
 }
 
 th {
@@ -9,7 +20,8 @@ th {
 }
 
 input[type="text"] {
-  width: 100%;
+  width: 90%;
+  margin: 0 auto;
   font-size: x-large;
   padding: 0.2rem;
 }
