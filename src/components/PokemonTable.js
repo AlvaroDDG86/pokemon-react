@@ -8,6 +8,27 @@ import PokemonContext from '../PokemonContext';
 const PokemonTable = () => {
   const { state, dispatch } = useContext(PokemonContext)
 
+  const asc = state.order === 'asc'
+  const pokemonsShow = state.pokemon.filter((pkmn) =>
+    pkmn.name.english.toLowerCase().includes(state.filter.toLowerCase())
+  ).sort((a, b) => {
+    var nameA = asc ? a.name.english.toUpperCase() : b.name.english.toUpperCase();
+    var nameB = asc ? b.name.english.toUpperCase() : a.name.english.toUpperCase();
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  })
+
+  if (pokemonsShow.length === 0) return (
+    <div>
+      No pokemons found
+    </div>
+  )
+
   return (
     <table width="100%">
       <thead>
@@ -18,10 +39,8 @@ const PokemonTable = () => {
         </tr>
       </thead>
       <tbody>
-        {state.pokemon
-          .filter((pkmn) =>
-            pkmn.name.english.toLowerCase().includes(state.filter.toLowerCase())
-          )
+        {
+          pokemonsShow
           .slice(0, 20)
           .map((pkmn) => (
               <PokemonRow
@@ -32,7 +51,8 @@ const PokemonTable = () => {
                   payload: pokemon
                 })}
               />
-            ))}
+            ))
+        }
       </tbody>
     </table>
   );

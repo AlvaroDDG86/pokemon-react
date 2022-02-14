@@ -9,6 +9,7 @@ export const TwoColumnsLayout = styled.div`
   display: grid;
   grid-template-columns: 70% 30%;
   box-sizing: border-box;
+  margin-top: 1rem;
 `;
 
 export const Container = styled.div`

@@ -2,6 +2,7 @@ export const initialState = {
   filter: "",
   pokemon: [],
   selectedItem: null,
+  order: 'asc'
 };
 
 const PokemonReducer = (state, action) => {
@@ -10,6 +11,11 @@ const PokemonReducer = (state, action) => {
       return {
         ...state,
         filter: action.payload,
+      };
+    case "SET_ORDER":
+      return {
+        ...state,
+        order: action.payload,
       };
     case "SET_POKEMON":
       return {

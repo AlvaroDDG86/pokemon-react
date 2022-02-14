@@ -7,6 +7,7 @@ import "./App.css";
 import PokemonFilter from "./components/PokemonFilter";
 import PokemonInfo from "./components/PokemonInfo";
 import PokemonTable from "./components/PokemonTable";
+import PokemonOrder from "./components/PokemonOrder";
 
 import PokemonReducer, { initialState } from "./PokemonReducer";
 
@@ -33,6 +34,7 @@ function App() {
       <Container>
         <Title>Pokemon</Title>
         <PokemonFilter />
+        <PokemonOrder />
         <TwoColumnsLayout>
           <PokemonTable />
           <Center>

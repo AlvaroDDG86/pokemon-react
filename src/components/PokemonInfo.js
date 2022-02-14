@@ -9,10 +9,11 @@ const PokemonInfo = () => {
     <div
         style={{
             borderRadius: 5,
-            border: 'solid 2px #1976d2',
-            background: 'lightgray',
+            border: 'solid 2px gray',
+            background: '#1976d2',
             padding: '0.5rem',
-            minWidth: '100%'
+            minWidth: '100%',
+            color: 'white'
         }}
     >
       <h2>{selectedItem.name.english}</h2>
