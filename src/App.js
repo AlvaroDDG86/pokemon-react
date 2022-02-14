@@ -1,47 +1,41 @@
 import React, { useReducer } from "react";
 
+import { Routes, Route } from "react-router-dom";
 import PokemonContext from "./PokemonContext";
-import { Container, Title, TwoColumnsLayout, Center } from "./layouts/index";
 
 import "./App.css";
-import PokemonFilter from "./components/PokemonFilter";
-import PokemonInfo from "./components/PokemonInfo";
-import PokemonTable from "./components/PokemonTable";
-import PokemonOrder from "./components/PokemonOrder";
+import TheHeader from "./components/TheHeader";
+import Pokemons from "./views/Pokemons";
+import Favs from "./views/Favs";
 
 import PokemonReducer, { initialState } from "./PokemonReducer";
 
 function App() {
-  const [state, dispatch] = useReducer(PokemonReducer, { ...initialState })
+  const [state, dispatch] = useReducer(PokemonReducer, { ...initialState });
 
   React.useEffect(() => {
     fetch("http://localhost:3000/pokemon.json")
       .then((response) => response.json())
       .then((data) => {
         dispatch({
-          type: 'SET_POKEMON',
-          payload: data
+          type: "SET_POKEMON",
+          payload: data,
         });
       });
   }, []);
 
-  if (state.pokemon.length === 0) return <div>No pokemons found</div>;
   return (
-    <PokemonContext.Provider value={{
+    <PokemonContext.Provider
+      value={{
         state,
-        dispatch
-      }}>
-      <Container>
-        <Title>Pokemon</Title>
-        <PokemonFilter />
-        <PokemonOrder />
-        <TwoColumnsLayout>
-          <PokemonTable />
-          <Center>
-            <PokemonInfo />
-          </Center>
-        </TwoColumnsLayout>
-      </Container>
+        dispatch,
+      }}
+    >
+      <TheHeader />
+      <Routes>
+        <Route path="/" element={<Pokemons />}></Route>
+        <Route path="/favs" element={<Favs />}></Route>
+      </Routes>
     </PokemonContext.Provider>
   );
 }
