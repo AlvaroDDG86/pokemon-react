@@ -24,14 +24,14 @@ const PokemonRow = ({ pokemon, onSelect, onFav }) => {
         <Button
           variant={isSelected ? 'contained' : 'outlined'}
           color="primary"
-          onClick={() => onSelect(pokemon)}
+          onClick={() => onSelect(isSelected, pokemon)}
         >
           Select
         </Button>
         <Button
           variant={isFav ? 'contained' : 'outlined'}
           color="secondary"
-          onClick={() => onFav(pokemon)}
+          onClick={() => onFav(isFav, pokemon)}
         >
           Fav
         </Button>
