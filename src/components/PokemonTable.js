@@ -35,7 +35,7 @@ const PokemonTable = () => {
         <tr>
           <TableHead>Name</TableHead>
           <TableHead>Type</TableHead>
-          <TableHead>Select</TableHead>
+          <TableHead>Actions</TableHead>
         </tr>
       </thead>
       <tbody>
@@ -48,6 +48,10 @@ const PokemonTable = () => {
                 pokemon={pkmn}
                 onSelect={(pokemon) => dispatch({
                   type: 'SET_SELECTED',
+                  payload: pokemon
+                })}
+                onFav={(pokemon) => dispatch({
+                  type: 'SET_POKEMON_FAV',
                   payload: pokemon
                 })}
               />

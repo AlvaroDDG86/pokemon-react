@@ -8,6 +8,7 @@ export const PokemonTypeRow = {
     types: PropTypes.arrayOf(PropTypes.string),
   }),
   onSelect: PropTypes.func,
+  onFav: PropTypes.func,
 };
 
 export const PokemonTypeInfo = {
