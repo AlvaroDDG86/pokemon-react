@@ -14,7 +14,7 @@ function App() {
   const [state, dispatch] = useReducer(PokemonReducer, { ...initialState });
 
   React.useEffect(() => {
-    fetch("http://localhost:3000/pokemon.json")
+    fetch("https://pokereactapp.netlify.app/pokemon.json")
       .then((response) => response.json())
       .then((data) => {
         dispatch({
